@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ResumePro Templates v2</title>
+<link rel="stylesheet" href="assets/css/templates.css">
+</head>
+<body class="neo">
+<div class="container">
+  <div class="hero card">
+    <div>
+      <h1>ResumePro — Choose layout templates (not just colors)</h1>
+      <p class="small">Four distinct templates: Neo Gradient, Minimal White, Portfolio Edge, Creative Splash. Fill once, switch layouts live.</p>
+      <div style="margin-top:10px">
+        <button class="btn" onclick="document.getElementById('personalForm').scrollIntoView()">Start</button>
+        <button class="btn" onclick="document.getElementById('resumeContainer').scrollIntoView()">Preview</button>
+      </div>
+    </div>
+    <div>
+      <div style="background:linear-gradient(90deg,#ff1cac,#0066ff);padding:10px;border-radius:8px;color:white;font-weight:800">Neo Gradient • Creative • Modern</div>
+      <div style="margin-top:8px" class="small">Selected template persisted locally</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div><strong style="color:white">Template Gallery</strong><div class="small">Click a thumbnail to switch layout</div></div>
+      <div class="controls">
+        <button class="btn" onclick="downloadHTML()">Download .html</button>
+        <button class="btn" onclick="downloadWord()">Download Word (.doc)</button>
+        <button class="btn" onclick="printPDF()">Download PDF</button>
+      </div>
+    </div>
+    <div class="templates" style="margin-top:12px">
+      <div class="template-thumb selected" data-tpl="neo"><div style="height:54px;border-radius:6px;background:linear-gradient(90deg,#ff1cac,#0066ff)"></div><div class="small">Neo Gradient</div></div>
+      <div class="template-thumb" data-tpl="minimal"><div style="height:54px;border-radius:6px;background:linear-gradient(90deg,#ffffff,#f3f4f6)"></div><div class="small">Minimal White</div></div>
+      <div class="template-thumb" data-tpl="portfolio"><div style="height:54px;border-radius:6px;background:linear-gradient(90deg,#f8fbff,#e8f7ff)"></div><div class="small">Portfolio Edge</div></div>
+      <div class="template-thumb" data-tpl="creative"><div style="height:54px;border-radius:6px;background:linear-gradient(90deg,#ffe6f7,#e6f0ff)"></div><div class="small">Creative Splash</div></div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:12px">
+    <div class="card">
+      <h3 style="color:white">Personal</h3>
+      <form id="personalForm">
+        <div class="form-row"><label>Name</label><input name="name" placeholder="Full name"></div>
+        <div class="form-row"><label>Title</label><input name="title" placeholder="e.g. Software Engineer"></div>
+        <div class="form-row"><label>Objective / Summary</label><textarea name="objective" placeholder="Short professional objective"></textarea></div>
+        <div class="form-row"><label>Email</label><input name="email" type="email" placeholder="you@example.com"></div>
+        <div class="form-row"><label>Phone</label><input name="phone" placeholder="+91..."></div>
+        <div class="form-row"><label>Photo (optional)</label><input type="file" accept="image/*" onchange="handlePhoto(this)"></div>
+        <div style="display:flex;gap:10px"><button type="button" class="btn" onclick="saveForm('personalForm')">Save</button><button type="button" class="btn" onclick="document.getElementById('educationForm').scrollIntoView()">Next</button></div>
+      </form>
+
+      <hr style="margin:12px 0;border:none;border-top:1px solid rgba(255,255,255,0.04)">
+
+      <h3 style="color:white">Education</h3>
+      <form id="educationForm">
+        <div class="form-row"><label>Education (one per line)</label><textarea name="education" placeholder="Degree — Institution (Year)"></textarea></div>
+        <div style="display:flex;gap:10px"><button type="button" class="btn" onclick="saveForm('educationForm')">Save</button></div>
+      </form>
+
+      <hr style="margin:12px 0;border:none;border-top:1px solid rgba(255,255,255,0.04)">
+
+      <h3 style="color:white">Skills</h3>
+      <form id="skillsForm">
+        <div class="form-row"><label>Skills (comma separated)</label><input name="skills" placeholder="Python, ML, SQL"></div>
+        <div style="display:flex;gap:10px"><button type="button" class="btn" onclick="saveForm('skillsForm')">Save</button></div>
+      </form>
+
+      <hr style="margin:12px 0;border:none;border-top:1px solid rgba(255,255,255,0.04)">
+
+      <h3 style="color:white">Projects</h3>
+      <form id="projectsForm">
+        <div class="form-row"><label>Projects (one per line)</label><textarea name="projects" placeholder="Project — short description"></textarea></div>
+        <div class="form-row"><label>Hobbies (comma separated)</label><input name="hobbies" placeholder="Reading, Hiking"></div>
+        <div class="form-row"><label>Languages (comma separated)</label><input name="languages" placeholder="English, Tamil"></div>
+        <div class="form-row"><label>Social (comma separated — LinkedIn, GitHub, Portfolio)</label><input name="social" placeholder="linkedin.com/in/you, github.com/you"></div>
+        <div style="display:flex;gap:10px"><button type="button" class="btn" onclick="saveForm('projectsForm')">Save All</button><button class="btn" onclick="document.getElementById('resumeContainer').scrollIntoView()">Preview</button></div>
+      </form>
+
+    </div>
+
+    <div class="card">
+      <h3 style="color:white">Live Resume Preview</h3>
+      <div id="resumeContainer" class="resume-output">Loading preview…</div>
+      <div style="margin-top:10px" class="small">Tip: Use Download Word or Print to save PDF. For true .docx or direct PDF download, I can include libraries (optional).</div>
+    </div>
+  </div>
+  <pre id="embedCSS" style="display:none"></pre>
+</div>
+<script id="embedCSS" type="text/plain"></script>
+<script src="assets/js/templates.js"></script>
+<script>
+fetch('assets/css/templates.css').then(r=>r.text()).then(t=> document.getElementById('embedCSS').textContent = t);
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+
+:root{
+  --maxw:1100px; --radius:12px; --gap:16px; --muted:#6b7280; --bg:#0b1220;
+  --accent1:#ff1cac; --accent2:#0066ff;
+  --card-bg: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:Inter,system-ui,Arial;background:var(--bg);color:#e6f7ff}
+a{text-decoration:none;color:inherit}
+.container{max-width:var(--maxw);margin:28px auto;padding:18px}
+
+/* hero */
+.hero{background:linear-gradient(135deg,var(--accent1),var(--accent2));padding:18px;border-radius:14px;color:white;margin-bottom:18px;display:flex;justify-content:space-between;align-items:center}
+.hero .btn{background:rgba(255,255,255,0.12);color:white;padding:10px 14px;border-radius:999px;font-weight:800;border:none;cursor:pointer}
+
+/* cards and layout */
+.card{background:var(--card-bg);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.04)}
+.grid{display:grid;grid-template-columns:1fr 420px;gap:18px}
+@media(max-width:980px){.grid{grid-template-columns:1fr}}
+
+/* form */
+.form-row{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+label{font-weight:700;color:#fff}
+input,textarea,select{border-radius:10px;padding:10px;border:none;background:rgba(255,255,255,0.04);color:white}
+textarea{min-height:100px}
+.small{font-size:0.88rem;color:var(--muted)}
+
+/* template gallery */
+.templates{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.template-thumb{width:150px;height:110px;border-radius:8px;padding:8px;background:rgba(255,255,255,0.02);cursor:pointer;border:2px solid transparent;display:flex;flex-direction:column;justify-content:space-between}
+.template-thumb.selected{border-color:rgba(255,255,255,0.14);box-shadow:0 12px 30px rgba(0,0,0,0.5)}
+
+/* resume container common */
+.resume-output{background:white;color:#07101a;border-radius:10px;padding:18px;min-height:520px;border:1px solid #e6eef2}
+.controls{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+
+/* -------- Template: Neo Gradient (A) -------- */
+.neo .resume-output{padding:20px;position:relative}
+.neo .header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.neo .name{font-size:1.6rem;font-weight:900;background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.neo .photo{width:96px;height:96px;border-radius:12px;overflow:hidden}
+
+/* two-column layout */
+.neo .two-col{display:grid;grid-template-columns:1fr 240px;gap:14px}
+@media(max-width:900px){.neo .two-col{grid-template-columns:1fr}}
+
+/* -------- Template: Minimal White (C) -------- */
+.minimal-body{background:white;padding:22px;border-radius:8px;color:#041022}
+.minimal .resume-output{background:#ffffff;padding:22px;border-radius:8px}
+.minimal .left{padding-right:18px}
+.minimal .name{font-size:1.5rem;font-weight:800;color:#061022}
+
+/* single column clean */
+.minimal .section{margin-bottom:12px;border-bottom:1px solid #f3f4f6;padding-bottom:8px}
+
+/* -------- Template: Portfolio Edge (E) -------- */
+.portfolio .resume-output{background:linear-gradient(180deg,#ffffff,#f7fbff);padding:18px;border-radius:10px}
+.portfolio .header{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+.portfolio .photo{width:88px;height:88px;border-radius:8px;overflow:hidden}
+.portfolio .projects .card-small{background:#fff;border-radius:8px;padding:8px;margin-bottom:8px;border:1px solid #eef6ff}
+
+/* -------- Template: Creative Splash (F) -------- */
+.creative .resume-output{background:linear-gradient(135deg,#ffe6f7,#e6f0ff);padding:20px;border-radius:12px;color:#072033}
+.creative .name{font-weight:900;font-size:1.5rem}
+.creative .accent{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:6px 10px;border-radius:8px;color:white;display:inline-block;font-weight:800}
+
+/* chips & lists */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:#f1f5f9;padding:6px 10px;border-radius:999px;font-weight:700;font-size:0.85rem;color:#07101a}
+
+/* print */
+@media print{
+  body{background:white;color:#000}
+  .hero,.controls,.templates{display:none}
+  .resume-output{border:none;box-shadow:none;padding:0}
+}
